@@ -14,7 +14,7 @@ The goal is to arrange the blocks so that they are in order, using as few moves 
 
 ## Our project files
 
-**Project Specific Files:** `Board.java`, `Solver.java`, `Client.java`, `DataClient.java`, `View.java`, `Board.txt`
+**Project Specific Files:** `Board.java`, `Solver.java`, `Client.java`, `DataClient.java`, `DataClient2.java`, `View.java`, `Board.txt`
 
 **Relevant Data Structures:** `MinPQ.java`, `LinkedList.java`, `Stack.java`
 
@@ -91,7 +91,13 @@ This class is the test client you should run to test the code. It outputs in the
 
 ##DataClient.java
 
-This class the client to obtain run data for analysis of the A* algorithm. It randomizes the board for 3x3 and 4x4 dimensions, and records the number of branches needed to solve a NxN puzzle.
+This class contains the client to obtain run data for analysis of the A* algorithm. It randomizes the board for 3x3 and 4x4 dimensions, and records the number of branches needed to solve a NxN puzzle.
+
+##DataClient2.java
+
+This class contains another client to obtain run data for analysis of the A* algorithm. It creates a board by randomly shuffling the board backwards, and records the number of branches needed to solve a NxN puzzle.
+
+Note that `DataClient.java` and `DataClient2.java` differ in that the former creates a board that we don't know how many steps will take to solve the puzzle, while in the latter one we can clearly indicate the number of shuffles (and thereby test how the steps will affect how many branches are needed).
 
 ##View.java
 

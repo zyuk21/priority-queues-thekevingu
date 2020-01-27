@@ -10,11 +10,15 @@ import java.util.Random;
 
 public class DataClient {
 
-    public static void main(String[] args) throws IOException {
+    /* parameters */
+    private static final int CYCLES = 5;
+
+    public static void main(String[] args) {
         System.out.println("Kevin, Alex, and Elven's DataClient.java");
         System.out.println("- Generates randomized n by n boards to test algorithm efficiency");
         System.out.println("- Note: step 0 is initial board state");
         System.out.println("- Note: 4 by 4 takes a VERY long time to run");
+
 
         // Tests board dimension 3 and 4
         for (int boardDimension = 3; boardDimension <= 4; boardDimension++) {
@@ -24,16 +28,17 @@ public class DataClient {
             // Counter
             double average = 0;
             // Run 1000 iterations
-            for (int i = 0; i < 1000; i++) {
+            for (int i = 0; i < CYCLES; i++) {
                 // Creates solver for new randomised board
                 Solver solver = new Solver(new Board(shuffleInto2D(arr, boardDimension)));
                 average += solver.counter;
             }
-            System.out.println("Average: " + average / 1000);
+            System.out.println("Average: " + average / CYCLES + " queues");
         }
     }
 
     // Checks to see if board is solvable
+    // This is a mathematical function to detect whether it is solvable
     private static boolean isSolvable(int[] board) {
         int parity = 0;
         int gridDimension = (int) Math.sqrt(board.length);
@@ -62,10 +67,10 @@ public class DataClient {
             // Blank on odd row; counting from bottom
             if (blankRow % 2 == 0)
                 return parity % 2 == 0;
-            // Blank on even row; counting from bottom
+                // Blank on even row; counting from bottom
             else
                 return parity % 2 != 0;
-        // Odd grid
+            // Odd grid
         else
             return parity % 2 == 0;
     }
@@ -101,4 +106,9 @@ public class DataClient {
 
         return arr2D;
     }
+
+    private static boolean inBounds(int x, int y, int dimension) {
+        return x >= 0 && x < dimension && y >= 0 && y < dimension;
+    }
+
 }
