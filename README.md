@@ -18,6 +18,8 @@ The goal is to arrange the blocks so that they are in order, using as few moves 
 
 **Relevant Data Structures:** `MinPQ.java`, `LinkedList.java`, `Stack.java`
 
+**Writeup:** `Puzzle_Writeup.pdf`
+
 We followed the API on Canvas to create the project specific files. In addition to these, our extensions include analyzing data for the various distance metrics, calculating efficiency to find NxN solutions, loading the board from a source file, optimizing the priority queue size, caching the manhattan/hamming distances to reduce calculation costs, and implementing a minimalistic GUI.
 
 ## Board.java
@@ -85,21 +87,21 @@ For `solution`, we implement a stack to pop off the solution from the path nodes
 
 Next, our `BoardState` is a node that implements comparable to compare the priority for `MinPQ`.
 
-##Client.java
+## Client.java
 
 This class is the test client you should run to test the code. It outputs in the console the steps to the solved state of the board, and "Loaded board is unsolvable." for unsolvable boards. It loads the board from `src/Board.txt`.
 
-##DataClient.java
+## DataClient.java
 
-This class contains the client to obtain run data for analysis of the A* algorithm. It randomizes the board for 3x3 and 4x4 dimensions, and records the number of branches needed to solve a NxN puzzle.
+This class contains the client to obtain run data for analysis of the A* algorithm. It randomizes the board for 3x3 and 4x4 dimensions, and records the number of branches needed to solve a NxN puzzle. See writeup for more details on the properties we incorporate for the `isSolvable()` method.
 
-##DataClient2.java
+## DataClient2.java
 
 This class contains another client to obtain run data for analysis of the A* algorithm. It creates a board by randomly shuffling the board backwards, and records the number of branches needed to solve a NxN puzzle.
 
 Note that `DataClient.java` and `DataClient2.java` differ in that the former creates a board that we don't know how many steps will take to solve the puzzle, while in the latter one we can clearly indicate the number of shuffles (and thereby test how the steps will affect how many branches are needed).
 
-##View.java
+## View.java
 
 This runnable class creates a GUI using JFrame. It loads the board, and if there is a solution, a window will appear like the one below:
 
@@ -108,7 +110,7 @@ This runnable class creates a GUI using JFrame. It loads the board, and if there
 	
 Here, clicking `<` moves the step backwards, `>` forwards, and entering a number in the text field will take you to the corresponding step. The board state will appear on the text pane.
 
-##Board.txt
+## Board.txt
 
 This text file is used in `Client.java` and `View.java` to load a board state. The file should be formatted in the following way:
 
@@ -121,5 +123,5 @@ This text file is used in `Client.java` and `View.java` to load a board state. T
 
 Note two properties: the first line contains the board length, and the following lines (with spaces in between) contain the board state.
 
-##Other files
+## Other files
 As an extension, we coded `MinPQ.java` as the relevant data structure in this project. `MinPQ` is our minimum priority queue implemented through a heap. The other files, `LinkedList.java` and `Stack.java` were implemented in previous projects.
