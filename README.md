@@ -99,6 +99,8 @@ This class contains the client to obtain run data for analysis of the A* algorit
 
 This class contains another client to obtain run data for analysis of the A* algorithm. It creates a board by randomly shuffling the board backwards, and records the number of branches needed to solve a NxN puzzle.
 
+We backtracked a solved solution and test the number of queues needed to obtain the solution.
+
 Note that `DataClient.java` and `DataClient2.java` differ in that the former creates a board that we don't know how many steps will take to solve the puzzle, while in the latter one we can clearly indicate the number of shuffles (and thereby test how the steps will affect how many branches are needed).
 
 ## View.java

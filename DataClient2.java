@@ -27,17 +27,19 @@ public class DataClient2 {
         for (int step = BEGINNING_STEP; step <= END_STEP; step += INCREMENT) {
             double average = 0;
             for (int i = 0; i < CYCLES; i++) {
+                // This is used for 3x3
 //                int[][] randomizedArr3 = reverseStep(solvedBoard3, solvedBoard3.length, step);
 //                Board board3 = new Board(randomizedArr3);
 //                Solver solve3 = new Solver(board3);
 //                average += solve3.counter;
 
+                // This is used by 4x4
                 int[][] randomizedArr4 = reverseStep(solvedBoard4, solvedBoard4.length, step);
                 Board board4 = new Board(randomizedArr4);
                 Solver solve4 = new Solver(board4);
                 average += solve4.counter;
             }
-            System.out.println("Steps: " + step + "\tAverage: " + average / CYCLES + " queues");
+            System.out.println("Solve steps: " + step + "\tAverage: " + average / CYCLES + " queues");
         }
     }
 
